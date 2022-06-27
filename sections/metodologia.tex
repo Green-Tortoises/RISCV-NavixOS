@@ -1,1 +1,20 @@
 \section{Metodologia}
+
+Para começar pode-se acessar a documentação oficial do RISC-V [https://riscv.org/technical/specifications/] 
+e acessar o projeto do NanvixOS no Github [https://github.com/nanvix/nanvix]. A documentação do 
+processador é importante para saber como se executa operações de leitura, escrita e I/O. 
+Com essa documentação em mãos pode-se começar a entender como o Nanvix foi implementado para o 
+RISC-V, existem outras versões que podem ser usadas como referência para o aprendizado. 
+Será necessário também, algum sistema operacional compatível para o teste seja alguma 
+distro baseada no Debian, como o Ubuntu ou um Mac, que precisará de algumas adaptações 
+para funcionar corretamente (não há suporte no momento para o Windows). 
+
+Começar com uma \emph{good first issue} é uma boa ideia, uma vez que o sistema é composto de muitas linhas de 
+código que dificultam o entedimento imediato de todas as funcionalidades do sistema. 
+Por exemplo, \emph{Enable SUM Bit} \cite{EnableSUMBit} que já foi corrigida, 
+e pode ser usada de documentação para entender como um bug funciona e como solucioná-lo.
+
+\begin{figure}[h!]
+    \includegraphics[width=\textwidth]{images/enable_sum_bit_issue_github.png}
+    \caption{\emph{Bug} do \emph{SUM Bit} não sendo inicializado}
+\end{figure}

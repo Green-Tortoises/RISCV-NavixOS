@@ -1,15 +1,44 @@
 \section{Introdução}
 
-\emph{NanvixOS} é um sistema operacional educacional que tem o intuito de ensinar pessoas que se interessam em \emph{hack} de \emph{kernel}. 
-O sistema foi implementado em x86, uma arquitetura muito difundida atualmente, mas que não é a mais eficiente para sistemas 
-embarcados por conta do consumo superior de energia se comparado a outras arquiteturas de processador. O sistema do Nanvix foi 
-implementado durante a graduação de um aluno da Pontifícia Universidade Católica de Minas Gerais e ganhou forças quando outras 
-universidades começaram a adotá-lo para ensinar sistemas operacionais para seus alunos.
 
-Esse projeto cresceu e agora novos desafios apareceram, o interesse de suportar arquiteturas \emph{RISC-V} apareceu devido ao 
-interesse dessa tecnologia no mercado nos últimos anos e o aumento do número de empresas integrando essa tecnologia como a \emph{Nvidia} 
-ou a \emph{Western Digital}. Com esse cenário a transição se tornou muito viável, não sendo necessário pagar royalties pelo \emph{Instruction Set Architecture}
-(\emph{ISA}), como também possuindo um consumo energético mais eficiente se comparado ao antigo x86.  
+Para começar na área de sistemas operacionais pode-se pensar em tentar construir um sistema operacional do zero, 
+como uma forma de aprender mais sobre o funcionamento dos sistemas já existentes. Um grande problema que isso 
+trás é a grande complexidade de se construir um novo sistema. É necessário estar preparado para aprender o 
+código de máquina para qual arquitetura for suportar, escrever grandes códigos que irão controlar: teclado, 
+mouse, tela, rede, memória, entre outros. É um trabalho consideravelmente extenso.
 
-Com essa situação em mente, o objetivo do artigo é mostrar os estudos realizados no sistema \emph{NanvixOS}, tanto quanto os 
-estudos realizados para o \emph{RISC-V}, para a nova etapa desse projeto.
+NanvixOS é um projeto para facilitar esse aprendizado, uma vez que ele já possui uma implementação bem 
+simples de como funciona um sistema operacional, o uso dele em uma situação acadêmica é interessante. Com 
+um sistema pronto em mãos é bem mais simples escolher em qual área de interesse pode-se especializar sem se 
+preocupar com implementar todo o resto do sistema.
+
+Esse projeto suporta várias arquiteturas de processadores. Começar o aprendizado com um processador RISC 
+(Reduced Instruction Set Computer), pode ser mais simples do que um CISC (Complex Instruction Set Computer), 
+uma vez que possui uma quantidade inferior de instruções. O suporte à arquitetura RISC-V é inicial e ainda 
+precisa de alguns ajustes, mas é um ótimo ponto de início para qualquer iniciante em arquiteturas.
+
+Porquê escolher uma arquitetura emergente como RISC-V do que uma bem consolidada como x86. Um primeiro ponto 
+já foi citado, um número reduzido de instruções é um bom facilitador para aprender. Outro ponto importante 
+de ressaltar é que a arquitetura RISC-V é totalmente aberta, com isso todas as ferramentas e documentações 
+disponibilizadas pela RISC-V Organization [https://riscv.org/] são totalmente gratuitas e de código aberto. 
+Com isso, não será necessário pagar nenhuma taxa para começar a usar esse padrão.
+
+Com um ano de estudo na área, alguns problemas significativos apareceram, primeiramente um ponto positivo 
+para o x86 e negativo para o RISC-V é a quantidade de documentação disponível. O primeiro é um modelo de 
+processador consolidado de mais de 20 anos de existência que domina quase que totalmente o mercado de 
+computadores atuais. O segundo tem pouco mais de 10 anos de existência e ainda não foi adotado pelo 
+mercado, o que restringe bastante o número de desenvolvedores que documentam seu funcionamento.
+
+Focando um pouco mais na questão do mercado, existem algumas empresas se interessando mais pelo RISC-V, 
+como é o caso da Nvidia [\href{https://riscv.org/wp-content/uploads/2016/07/Tue1100_Nvidia_RISCV_Story_V2.pdf}{Citação!}] 
+e a Western Digital [\href{https://www.westerndigital.com/pt-br/solutions/risc-v}{Citação!}] que começaram a usar essa 
+arquitetura em seus produtos, por conta de sua versatilidade em resolver uma grande gama de problemas 
+diferentes. Tanto quanto seu custo totalmente acessível, se considerar que tanto o x86, quanto ARM, 
+por exemplo, precisam do pagamento de uma taxa para serem usados.
+
+Essa adoção tem crescido consideravelmente nos últimos anos 
+[https://riscv.org/announcements/2021/12/risc-v-celebrates-incredible-year-of-growth-and-progress-ratifying-multiple-technical-specifications-launching-new-education-programs-and-accelerating-broad-industry-adoption/]. 
+Problemas relacionados a não recepção pelo mercado serão rapidamente resolvidos quanto mais as empresas começarem 
+a adotar essa arquitetura. A projeção é que até 2025, essa arquitetura já movimente em torno de um bilhão de 
+dólares [https://riscv.org/blog/2021/03/risc-v-growth-and-successes-in-technology-and-industry-embedded-world-2021/] 
+e com isso irá apenas crescer e se tornar mais simples e acessível para novos pesquisadores.
