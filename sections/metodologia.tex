@@ -1,7 +1,7 @@
 \section{Metodologia}
 
-Para começar pode-se acessar a documentação oficial do RISC-V [https://riscv.org/technical/specifications/] 
-e acessar o projeto do NanvixOS no Github [https://github.com/nanvix/nanvix]. A documentação do 
+Para começar pode-se acessar a documentação oficial do RISC-V \cite{RISCV_documentation} 
+e acessar o projeto do NanvixOS no Github \cite{NanvixOS}. A documentação do 
 processador é importante para saber como se executa operações de leitura, escrita e I/O. 
 Com essa documentação em mãos pode-se começar a entender como o Nanvix foi implementado para o 
 RISC-V, existem outras versões que podem ser usadas como referência para o aprendizado. 
@@ -15,6 +15,17 @@ Por exemplo, \emph{Enable SUM Bit} \cite{EnableSUMBit} que já foi corrigida,
 e pode ser usada de documentação para entender como um bug funciona e como solucioná-lo.
 
 \begin{figure}[h!]
+    \centering
     \includegraphics[width=\textwidth]{images/enable_sum_bit_issue_github.png}
     \caption{\emph{Bug} do \emph{SUM Bit} não sendo inicializado}
+\end{figure}
+
+A correção de um bug como esse não exige mais do que 1 linha de código, mas para alcançar 
+essa linha foi necessário estudar como funcionam os bits de permissionamento de execução 
+dentro do RISC-V, o que é extremamente proveitoso para novos estudantes. Como disponível na figura 2.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{images/solucao_enable_sum_bit_github.png}
+    \caption{Solução para o bug do \emph{SUM Bit} não sendo inicializado \\ \cite{SolucaoEnableSUMBit}}
 \end{figure}
