@@ -1,18 +1,12 @@
 \section{Metodologia}
 
-Para começar pode-se acessar a documentação oficial do RISC-V \cite{RISCV_documentation} 
-e acessar o projeto do NanvixOS no Github \cite{NanvixOS}. A documentação do 
-processador é importante para saber como se executa operações de leitura, escrita e I/O. 
-Com essa documentação em mãos pode-se começar a entender como o Nanvix foi implementado para o 
-RISC-V, existem outras versões que podem ser usadas como referência para o aprendizado. 
-Será necessário também, algum sistema operacional compatível para o teste seja alguma 
-distro baseada no Debian, como o Ubuntu ou um Mac, que precisará de algumas adaptações 
-para funcionar corretamente (não há suporte no momento para o Windows). 
+É sabido que sistemas operacionais e processadores andam lado a lado. Com isso, ter-se em mãos as especificações do funcionamento de um processador e o conhecimento da gerência de leitura, escrita e I/O é de suma importância. A utilização da documentação oficial do RISC-V [\url{https://riscv.org/technical/specifications/}], como também artigos que realizaram estudos sobre processadores foram de grande relevância para o conhecimento inicial e, consequentemente, o desenvolvimento mais assertivo do projeto. 
 
-Começar com uma \emph{good first issue} é uma boa ideia, uma vez que o sistema é composto de muitas linhas de 
-código que dificultam o entedimento imediato de todas as funcionalidades do sistema. 
-Por exemplo, \emph{Enable SUM Bit} \cite{EnableSUMBit} que já foi corrigida, 
-e pode ser usada de documentação para entender como um bug funciona e como solucioná-lo.
+Para amadurecer mais no projeto, foi desenvolvido uma série de vídeos com o intuito de familiarização com o sistema que pode ser usado como uma documentação mais focada no boot do Nanvix e que explica como funciona todo o processo de configuração do ambiente, compilação e depuração desse sistema [\url{https://www.youtube.com/playlist?list=PLUzQL-lHV0FjQLqNW_QmxATcYkGfnaOdt}]. 
+
+Depois de um período desenvolvendo os vídeos, se tornou claro que não se estava tendo um resultado promissor. O boot do NanvixOS, como de qualquer outro sistema embarcado, possui uma hierarquia gigantesca arquivos. Por conta disso, era complicado de entender a maior parte do processo e as conclusões obtidas se tornaram rapidamente equivocadas.  
+
+Então começar com uma good first issue é uma boa ideia, uma vez que o sistema é composto de muitas linhas de código. Por exemplo, o Enable SUM Bit [\url{https://github.com/nanvix/hal/issues/357}] solucionado nesse artigo, pode ser usado de documentação para entender como um bug pequeno funciona dentro de todo o sistema e como solucioná-lo.  
 
 \begin{figure}[h!]
     \centering
@@ -20,12 +14,26 @@ e pode ser usada de documentação para entender como um bug funciona e como sol
     \caption{\emph{Bug} do \emph{SUM Bit} não sendo inicializado}
 \end{figure}
 
-A correção de um bug como esse não exige mais do que 1 linha de código, mas para alcançar 
-essa linha foi necessário estudar como funcionam os bits de permissionamento de execução 
-dentro do RISC-V, o que é extremamente proveitoso para novos estudantes. Como disponível na figura 2.
+A correção de um bug como esse não exige mais do que 1 linha de código, mas para alcançar essa linha foi necessário estudar como funcionam os bits de permissionamento de execução no hardware do RISC-V, o que é extremamente proveitoso para novos estudantes. Como visto na figura 2
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\textwidth]{images/solucao_enable_sum_bit_github.png}
     \caption{Solução para o bug do \emph{SUM Bit} não sendo inicializado \\ \cite{SolucaoEnableSUMBit}}
+\end{figure}
+
+Com uma familiaridade mais notória no ambiente de estudo, devido a correção de bugs, foi possível estabelecer objetivos mais desafiadores. O próximo problema que existia no sistema era o uso de uma versão do GCC mais atual que implementa pseudo instruções reduzidas que não são suportadas pelo PULP SDK. Esse development kit é pensado para emular um ambiente controlado em que são testados instruções de RISC-V o mais próximo do real quanto for possível. 
+
+Para começar será necessário algum sistema operacional compatível para o teste. Seja alguma distro baseada no Debian, como o Ubuntu ou um Mac, este que precisará de algumas adaptações para funcionar corretamente (não há suporte no momento para o Windows). 
+
+Para compilar o sistema é necessário usar o gcc com a flag TARGET definida para “qemu-riscv”, isso configura o makefile para compilar corretamente a hal (Hardware Abstraction Layer) e a barelib. É necessário ter um cross-compiler para RISC-V instalado corretamente no computador e os pacotes do qemu para emulação de um processador RISC-V. Toda essa informação está disponível na documentação oficial do Nanvix [\url{https://github.com/nanvix/hal/blob/dev/README.md}]. 
+
+Com todas as ferramentas em mãos o trabalho é fazer um backport da versão do compilador gcc que estava sendo usado no projeto (versão 1.10 para 1.9.1) As versões diferem na forma escrever as pseudo instruções. Para que o sistema funcione corretamente, foi escolhida uma SDK para o desenvolvimento do Nanvix, o pulp sdk [\url{https://github.com/pulp-platform/pulp-sdk}].
+  
+Para utilizar essa ferramenta é necessário compilar o cross-compiler da sua plataforma para RISC-V e definir a variável de ambiente "PULP\_RISCV\_GCC\_TOOLCHAIN" com o caminho para esse programa. Com isso, será possível executar o pulp e testar as aplicações que já estão disponíveis dentro do repositório dele para verificar se a emulação está funcionando corretamente, sempre é importante ressaltar que é necessário verificar se está funcionando a emulação de múltiplas harts ou se está rodando todo o código de forma sequencial.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{images/backport_merged.png}
+    \caption{Merge do backport funcional \\ \cite{SolucaoEnableSUMBit}} % https://github.com/nanvix/hal/pull/650/files
 \end{figure}
