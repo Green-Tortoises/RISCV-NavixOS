@@ -1,0 +1,18 @@
+\subsection{Nanvix}
+
+Nanvix é um sistema operacional educacional, que se baseia na estrutura do Unix System V. Seu design é simples e moderno, 
+para ajudar pessoas interessadas em sistemas embarcados há aprender sobre hack de kernel. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{images/nanvix_architecture.png}
+    \caption{Arquitetura do Nanvix \\ \cite{ArquiteturaNanvix}} % https://github.com/nanvix/hal/pull/650/files
+\end{figure}
+
+A arquitetura do Nanvix é mostrada na Figura 1. Nela é possível observar que a estruturação de duas camadas: (i) O nível da kernel, 
+que roda em privileged mode, possui acesso a todo o hardware; (ii) O nível de usuário, que roda em unprivileged mode, onde o software 
+não possui acesso direto ao hardware e é responsável pela interação com o usuário. 
+
+A kernel se baseia em uma arquitetura monolítica, sendo estruturada dessa forma em diversos sub-sistemas: (i) camada de abstração de hardware, 
+(ii) sistema de gerencia de memoria, (iii) sistema de gerencia de processo e (iv) sistema de arquivos. Para mais informações relacionadas a arquitetura 
+do Nanvix, confira esse artigo [citação]
