@@ -7,14 +7,14 @@ precisará de algumas adaptações para funcionar corretamente (não há suporte
 
 Para compilar o sistema é necessário usar o gcc com a flag TARGET definida para “qemu-riscv”, isso configura o makefile para compilar corretamente a 
 hal (Hardware Abstraction Layer) e a barelib. É necessário ter um cross-compiler para RISC-V instalado corretamente no computador e os pacotes do qemu 
-para emulação de um processador RISC-V. Toda essa informação está disponível na documentação oficial do Nanvix [https://github.com/nanvix/hal/blob/dev/README.md]. 
+para emulação de um processador RISC-V. Toda essa informação está disponível na documentação oficial do Nanvix \cite{NanvixOS}. 
 
 Com todas as ferramentas em mãos o trabalho é fazer um backport da versão do compilador gcc que estava sendo usado no projeto (versão 1.10 para 1.9.1) As versões 
 diferem na forma de escrever as pseudo instruções. Para utilizar essa ferramenta é necessário compilar o cross-compiler da sua plataforma para RISC-V e definir a 
 variável de ambiente “PULP\_RISCV\_GCC\_TOOLCHAIN” com o caminho para esse programa. Com isso, será possível executar o pulp e testar as aplicações que já estão 
 disponíveis dentro do repositório dele para verificar se a emulação está funcionando corretamente. Sempre é importante ressaltar que é necessário verificar o 
 funcionamento da emulação de múltiplas harts ou se está rodando todo o código de forma sequencial. Toda essa informação está disponível na documentação oficial 
-do Pulp SDK [https://github.com/pulp-platform/pulp-sdk].
+do Pulp SDK \cite{PulpSDKRepositorio}.
 
 \begin{figure}[h!]
     \centering
