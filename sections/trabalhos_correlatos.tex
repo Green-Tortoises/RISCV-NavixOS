@@ -1,1 +1,19 @@
 \section{Trabalhos Correlatos}
+
+Diversos trabalhos no Nanvix já foram feitos para que outras arquiteturas fossem suportadas. \cite{PENNA20211} que apresenta o uso já funcional de um port do 
+Nanvix para outra arquitetura chamada MPPA. Foi usado um processador many-cores de 288 núcleos que mostrou um ganho significativo de desempenho quando usado um 
+modelo IKC Facility (modelo esse explicado durante o artigo), quando comparado com o modelo mailbox (esse que era o modelo vigente).
+
+O criador do Nanvix, Pedro Penna apresentou todo o modelo de construção de criação do seu sistema nessa tese de doutorado \cite{penna:tel-03545212}. Esse artigo 
+apresenta várias proposições de modelos de software construídos para atender com a maior eficiência ao modelo de lightway many cores, em que um mesmo processador 
+pode possuir núcleos com especialidades diferentes e que o sistema operacional pode se aproveitar disso, dividindo o trabalho para os núcleos que consigam executar 
+aquela instrução com maior performance e menor gasto energético.
+
+O Nanvix já está sendo projetado para funcionar em ambientes com múltiplos núcleos Reinaldo et al {2022}. Esse, implementou uma biblioteca de paralelismo chamada 
+openmp dentro do sistema. Com isso, tornou-se possível o uso de múltiplos processadores sendo usados por uma única aplicação para um ganho de desempenho em aplicações 
+que podem ser paralelizadas.
+
+A soma dos esforços de vários contribuidores, fora os já citados acima, resultou em um projeto voltado ao uso do Nanvix dentro de um microssatélite que será usado 
+para fotografar a floresta Amazônica \cite{RepoCervero}. Esse, chama-se projeto Cevero pensado pela Universidade Federal do Rio Grande do Norte, juntamente com a 
+Pontifícia Universidade Católica de Minas Gerais e a Universidade Federal de Santa Catarina em construir um projeto inteiramente feito de código aberto, uma soma 
+de um processador RISC-V com NanvixOS.
