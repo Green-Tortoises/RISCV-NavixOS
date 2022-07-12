@@ -1,0 +1,9 @@
+\section{Discussão}
+
+Após todas as etapas realizadas, foi necessário verificar o funcionamento das modificações realizadas no código. Para isso foi realizada uma bateria de testes, que 
+pode ser organizada em duas etapas: (i) A primeira consiste em testes que são realizados manualmente por outros contribuidores, ao enviar o commit para o repositório 
+da organização; (ii) A segunda consiste na realização de testes na plataforma Jenkins, que faz uma compilação do projeto desde o nível de kernel ao nível de usuário. 
+
+É importante citar que os testes no Jenkins não foram realizados de forma correta, já que o servidor está passando por alguns problemas. Com isso, foi necessário que
+um contribuidor (João Souto) fizesse os testes manualmente em sua própria máquina para comprovar que as linhas modificadas estavam funcionando conforme o esperado. Com 
+essa aprovação, as linhas modificadas foram inseridas no código oficial do sistema disponível em \cite{SolucaoInstrucoesDOWNGrade}, e o backport foi realizado. 
