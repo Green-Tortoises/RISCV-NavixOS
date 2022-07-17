@@ -5,14 +5,13 @@ para ajudar pessoas interessadas em sistemas embarcados há aprender sobre hack 
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{images/nanvix_architecture.png}
-    \caption{Arquitetura do Nanvix \\ \cite{ArquiteturaNanvix}} % https://github.com/nanvix/hal/pull/650/files
+    \includegraphics[width=\textwidth]{images/overview_nanvix.png}
+    \caption{Arquitetura do Nanvix \\ \cite{penna:tel-03545212}}
 \end{figure}
 
-A arquitetura do Nanvix é mostrada na Figura 1. Nela é possível observar que a estruturação de duas camadas: (i) O nível da kernel, 
-que roda em privileged mode, possui acesso a todo o hardware; (ii) O nível de usuário, que roda em unprivileged mode, onde o software 
-não possui acesso direto ao hardware e é responsável pela interação com o usuário. 
+A Figura 1 mostra a organização da arquitetura do Nanvix. Sua estrutura é baseada em um layout de quatro camadas: (i) Nível de Hardware; (ii) Kernel; 
+(iii) Serviços do Sistema;  (iv) Software para Usuário.
 
-A kernel se baseia em uma arquitetura monolítica, sendo estruturada dessa forma em diversos sub-sistemas: (i) camada de abstração de hardware, 
-(ii) sistema de gerencia de memoria, (iii) sistema de gerencia de processo e (iv) sistema de arquivos. Para mais informações relacionadas a arquitetura 
-do Nanvix, confira esse artigo [citação]
+Na camada (iii), a HAL é responsável por possibilitar a portabilidade do Nanvix para diversos processadores lightweight manycores. Enquanto o Microkernel 
+oferece recursos para o sistema com apenas a utilização de apenas um cluster, além de rodar em privileged mode e possuir um nível de abstração mínimo do SO. 
+É possível obter mais informações sobre o Nanvix nos estudos realizados por Pedro Penna \cite{penna:tel-03545212}.
