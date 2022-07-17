@@ -1,19 +1,32 @@
 \section{Trabalhos Correlatos}
 
+O artigo \emph{Real-Time Operating System for DSP Clusters} \cite{Drozdov2015RealTimeOS} apresenta um modelo de arquitetura e princípios utilizados na construção
+do Milandr-OS. Desenvolvido, esse, para clusters de multi-processadores com comunicação ponta-a-ponta usando sinais digitais. A criação deste se deu no momento em
+que programadores tinham problemas constantes em reescrever algoritmos entre máquinas diferentes, por conta da diferença de arquitetura entre elas. Esse sistema
+provê algumas interfaces padronizadas que independente do hardware que for executado, os algoritmos previamente escritos poderão ser reutilizados.
+
+Conforme proposto em \emph{Porting an Operating System on an ARM-based sensor platform} \cite{7372829} um sistema Linux foi portado para um computador embarcado para
+que pudesse ser usado aplicações que se utilizassem de todos os sensores disponíveis nessa placa. O sistema era originalmente proposto para alguns modelos de processador
+ARM, mas não era totalmente funcional com os sensores que estavam presentes nesse FPGA e o artigo mencionado conseguiu que todos os sensores da placa funcionassem.
+
 Diversos trabalhos no Nanvix já foram feitos para que outras arquiteturas fossem suportadas. \cite{PENNA20211} que apresenta o uso já funcional de um port do 
 Nanvix para outra arquitetura chamada MPPA. Foi usado um processador many-cores de 288 núcleos que mostrou um ganho significativo de desempenho quando usado um 
 modelo IKC Facility (modelo esse explicado durante o artigo), quando comparado com o modelo mailbox (esse que era o modelo vigente).
 
-O criador do Nanvix, Pedro Penna apresentou todo o modelo de construção de criação do seu sistema nessa tese de doutorado \cite{penna:tel-03545212}. Esse artigo 
-apresenta várias proposições de modelos de software construídos para atender com a maior eficiência ao modelo de lightway many cores, em que um mesmo processador 
-pode possuir núcleos com especialidades diferentes e que o sistema operacional pode se aproveitar disso, dividindo o trabalho para os núcleos que consigam executar 
-aquela instrução com maior performance e menor gasto energético.
+Conforme Pedro Penna, todo o modelo de construção do sistema está contido nessa tese de doutorado \cite{penna:tel-03545212}. Esse artigo apresenta várias proposições 
+de modelos de software construídos para atender com a maior eficiência ao modelo de lightway many cores, em que um mesmo processador pode possuir núcleos com especialidades 
+diferentes e que o sistema operacional pode se aproveitar disso, dividindo o trabalho para os núcleos que consigam executar aquela instrução com maior performance e menor 
+gasto energético.
 
-O Nanvix já está sendo projetado para funcionar em ambientes com múltiplos núcleos Reinaldo et al {2022}. Esse, implementou uma biblioteca de paralelismo chamada 
+O Nanvix já está sendo projetado para funcionar em ambientes com múltiplos núcleos \cite{MSC-Reinaldo}. Esse, implementou uma biblioteca de paralelismo chamada 
 openmp dentro do sistema. Com isso, tornou-se possível o uso de múltiplos processadores sendo usados por uma única aplicação para um ganho de desempenho em aplicações 
 que podem ser paralelizadas.
 
+Um software de código aberto chamado PULP-SDK foi construído com o intuito de escolher as melhores ferramentas para emulação e virtualização de processadores RISC-V. 
+No artigo {GVSoC: A Highly Configurable, Fast and Accurate Full-Platform Simulator for RISC-V based IoT Processors}, foi apresentado uma proposta de software chamada
+GVSoC que é totalmente modificável, rápido e preciso na hora de virtualizar esse processador. Por conta disso, foi incluído no PULP e foi utilizado neste artigo, terá
+uma seção apenas para citá-lo.
+
 A soma dos esforços de vários contribuidores, fora os já citados acima, resultou em um projeto voltado ao uso do Nanvix dentro de um microssatélite que será usado 
-para fotografar a floresta Amazônica \cite{RepoCervero}. Esse, chama-se projeto Cevero pensado pela Universidade Federal do Rio Grande do Norte, juntamente com a 
-Pontifícia Universidade Católica de Minas Gerais e a Universidade Federal de Santa Catarina em construir um projeto inteiramente feito de código aberto, uma soma 
-de um processador RISC-V com NanvixOS.
+para fotografar a floresta Amazônica \cite{RepoCervero}. Esse, chama-se projeto CEVERO (Chip multi-procEssor for Very Energy-efficient aeRospace missiOns), e tem 
+como membros a Universidade Federal do Rio Grande do Norte e Pontifícia Universidade Católica de Minas Gerais. 
