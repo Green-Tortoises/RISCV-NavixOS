@@ -1,7 +1,6 @@
 \subsection{Nanvix}
 
-Nanvix é um sistema operacional educacional, que se baseia na estrutura do Unix System V. Seu design é simples e moderno, 
-para ajudar pessoas interessadas em sistemas embarcados há aprender sobre hack de kernel. 
+Nanvix é um sistema operacional com origem em uma abordagem educacional \cite{NanvixEdu} e que se baseia na estrutura do Unix System V. Embora com design é simples, o Nanvix evolui para uma versão distribuída com compatibilidade com a arquitetura \textit{lightweight manycore} MPPA-256.
 
 \begin{figure}[h!]
     \centering
@@ -10,7 +9,7 @@ para ajudar pessoas interessadas em sistemas embarcados há aprender sobre hack 
 \end{figure}
 
 A Figura 1 mostra a organização da arquitetura do Nanvix. Sua estrutura é baseada em um layout de quatro camadas: (i) Nível de Hardware; (ii) Kernel; 
-(iii) Serviços do Sistema;  (iv) Software para Usuário.
+(iii) Serviços do Sistema; (iv) Software para Usuário.
 
 Na camada (iii), a HAL é responsável por possibilitar a portabilidade do Nanvix para diversos processadores lightweight manycores. Enquanto o Microkernel 
 oferece recursos para o sistema com apenas a utilização de apenas um cluster, além de rodar em privileged mode e possuir um nível de abstração mínimo do SO. 
