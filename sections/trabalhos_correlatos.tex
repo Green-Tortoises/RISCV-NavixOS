@@ -1,20 +1,20 @@
 \section{Trabalhos Correlatos}
 
-Esta seção apresenta alguns artigos voltados para \textit{port} de sistema operacionais, além de uma visão da própria utilização do Nanvix em outras arquiteturas.
+Esta seção apresenta alguns artigos voltados para o \textit{port} de sistemas operacionais, além de uma visão da própria utilização do Nanvix em outras arquiteturas.
 
-O artigo \emph{Real-Time Operating System for DSP Clusters} \cite{Drozdov2015RealTimeOS} apresenta um modelo de arquitetura e princípios utilizados na construção
+O artigo de Drozdov \cite{Drozdov2015RealTimeOS} apresenta um modelo de arquitetura e princípios utilizados na construção
 do Milandr-OS. Desenvolvido para clusters de multi-processadores com comunicação ponta-a-ponta usando sinais digitais. A criação deste se deu no momento em
 que programadores tinham problemas constantes em reescrever algoritmos entre máquinas diferentes, por conta da diferença de arquitetura entre elas. Esse sistema
 provê algumas interfaces padronizadas que independente do hardware que for executado, os algoritmos previamente escritos poderão ser reutilizados.
 
-Conforme proposto em \emph{Porting an Operating System on an ARM-based sensor platform} \cite{7372829}, um sistema Linux foi portado para um computador embarcado para
+Conforme proposto Legaspi \cite{7372829}, um sistema Linux foi portado para um computador embarcado para
 que pudesse ser usado aplicações que se utilizassem de todos os sensores disponíveis na placa. O sistema era originalmente proposto para alguns modelos de processador ARM, mas não era totalmente funcional com os sensores que estavam presentes nesse FPGA e o artigo mencionado conseguiu que todos os sensores da placa funcionassem.
 
-Diversos trabalhos no Nanvix já foram feitos para que outras arquiteturas fossem suportadas. \cite{PENNA20211} que apresenta o uso já funcional de um port do 
-Nanvix para outra arquitetura chamada MPPA. Foi usado um processador many-cores de 288 núcleos que mostrou um ganho significativo de desempenho quando usado um 
+Diversos trabalhos no Nanvix já foram feitos para que outras arquiteturas fossem suportadas. Pedro Penna apresentou o uso já funcional de um port do 
+Nanvix para outra arquitetura chamada MPPA \cite{PENNA20211}. Foi usado um processador many-cores de 288 núcleos que mostrou um ganho significativo de desempenho quando usado um 
 modelo IKC Facility (modelo esse explicado durante o artigo), quando comparado com o modelo mailbox (esse que era o modelo vigente).
 
-Conforme Pedro Penna, todo o modelo de construção do sistema está contido na tese de doutorado \cite{penna:tel-03545212}. Esse artigo apresenta várias proposições 
+Pedro Penna apresenta um modelo de construção do sistema em sua tese de doutorado \cite{penna:tel-03545212}. Esse artigo apresenta várias proposições 
 de modelos de software construídos para atender com a maior eficiência ao modelo \emph{lightweight manycores}, em que um processador possui núcleos leves (eficientes em energia) e com especialidades diferentes, e que o sistema operacional pode se aproveitar disso, dividindo o trabalho para os núcleos que consigam executar aquela instrução com maior performance e menor gasto energético.
 
 O Nanvix já está sendo projetado para funcionar em ambientes com múltiplos núcleos \cite{MSC-Reinaldo}. Esse, implementou uma biblioteca de paralelismo chamada 
