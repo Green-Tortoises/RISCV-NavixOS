@@ -1,14 +1,14 @@
 \section{Introdução}
 
 O desenvolvimento de sistemas operacionais (SOs) é influenciado por uma série de fatores, entre eles, o contexto onde será utilizado. Nesse sentido, sistemas
-embarcados demandam SOs eficientes tanto do ponto de vista de desempenho quanto de energia. A plataforma \textit{Parallel Ultra Low Power} (PULP) \cite{PULP-Plataform} foi desenvolvida com base na arquitetura de conjunto de instruções RISC-V, e possui um número ajustável de processadores de acordo com o que for configurado. O \textit{port} de um sistema operacional para esta plataforma é fundamental para gerência de recursos.
+embarcados demandam SOs eficientes tanto do ponto de vista de desempenho quanto de energia. A plataforma \textit{Parallel Ultra Low Power} (PULP) \citet{PULP-Plataform} foi desenvolvida com base na arquitetura de conjunto de instruções RISC-V, e possui um número ajustável de processadores de acordo com o que for configurado. O \textit{port} de um sistema operacional para esta plataforma é fundamental para gerência de recursos.
 
 O SO Nanvix foi desenvolvido com foco em processadores \textit{lightweight manycore}. Em linhas gerais, é um SO que consegue ser executado em plataformas com poucos
 recursos. Há o \textit{port} para arquiteturas MPPA-256, OpenRISC, RISC-V, x86, OpTiMSoC e ARM64. No entanto, existem características que são específicas para cada 
 arquitetura e plataforma. Em especial, a plataforma PULP, que embora seja baseada em RISC-V não é compatível com nenhuma das arquiteturas previamente citadas. 
 Isso faz com que o principal problema abordado no artigo seja a portabilidade do Nanvix para o PULP.
 
-Nesse sentido, o objetivo principal deste artigo é apresentar a abordagem de \textit{port} para o PULP com discussões de etapas e verificação via ambiente de integração contínua chamada Jenkins \cite{JenkinsServer}. Este é um trabalho de pesquisa que contribui para um projeto desenvolvido na Universidade Federal do Rio Grande do Norte, que objetiva projetar  um microssatélite para monitorar a floresta Amazônica \cite{RepoCervero}. Com isso, o uso eficiente dos recursos, sendo o baixo consumo energético e alta performance, são essenciais.
+Nesse sentido, o objetivo principal deste artigo é apresentar a abordagem de \textit{port} para o PULP com discussões de etapas e verificação via ambiente de integração contínua chamada Jenkins \citet{JenkinsServer}. Este é um trabalho de pesquisa que contribui para um projeto desenvolvido na Universidade Federal do Rio Grande do Norte, que objetiva projetar  um microssatélite para monitorar a floresta Amazônica \cite{RepoCervero}. Com isso, o uso eficiente dos recursos, sendo o baixo consumo energético e alta performance, são essenciais.
 
 Este trabalho está organizado da seguinte forma. A Seção 2 discute os trabalhos relacionados. A Seção 3 é um \textit{background} sobre o sistema operacional e o 
 processador utilizado na pesquisa. A Seção 4 apresenta a abordagem do estudo utilizada para o \textit{port} do Nanvix. A Seção 5 refere-se a uma discussão sobre 
