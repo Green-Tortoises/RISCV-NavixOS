@@ -1,31 +1,17 @@
 \section{Trabalhos Correlatos}
 
-Esta seção apresenta alguns artigos voltados para o \textit{port} de sistemas operacionais, além de uma visão da própria utilização do Nanvix em outras arquiteturas.
+Esta seção apresenta alguns artigos voltados para o \textit{port} de sistemas operacionais, incluindo o próprio Nanvix para outras arquiteturas.
 
-O artigo de Drozdov \cite{Drozdov2015RealTimeOS} apresenta um modelo de arquitetura e princípios utilizados na construção
-do Milandr-OS. Desenvolvido para clusters de multi-processadores com comunicação ponta-a-ponta usando sinais digitais. A criação deste se deu no momento em
-que programadores tinham problemas constantes em reescrever algoritmos entre máquinas diferentes, por conta da diferença de arquitetura entre elas. Esse sistema
-provê algumas interfaces padronizadas que independente do hardware que for executado, os algoritmos previamente escritos poderão ser reutilizados.
+O artigo de Drozdov et al. \cite{Drozdov2015RealTimeOS} apresenta um modelo de arquitetura e princípios utilizados na construção
+do Milandr-OS. Desenvolvido para clusters de multi-processadores com comunicação ponta-a-ponta usando sinais digitais. A criação deste se deu no momento em que programadores tinham problemas constantes em reescrever algoritmos entre máquinas diferentes, por conta da diferença de arquitetura entre elas. Esse sistema provê algumas interfaces padronizadas que independente do hardware que for executado, os algoritmos previamente escritos poderão ser reutilizados.
 
-Conforme proposto Legaspi \cite{7372829}, um sistema Linux foi portado para um computador embarcado para
+Conforme proposto por Legaspi et al. \cite{7372829}, um sistema Linux foi portado para um computador embarcado para
 que pudesse ser usado aplicações que se utilizassem de todos os sensores disponíveis na placa. O sistema era originalmente proposto para alguns modelos de processador ARM, mas não era totalmente funcional com os sensores que estavam presentes nesse FPGA e o artigo mencionado conseguiu que todos os sensores da placa funcionassem.
 
-Diversos trabalhos no Nanvix já foram feitos para que outras arquiteturas fossem suportadas. Pedro Penna apresentou o uso já funcional de um port do 
-Nanvix para outra arquitetura chamada MPPA \cite{PENNA20211}. Foi usado um processador many-cores de 288 núcleos que mostrou um ganho significativo de desempenho quando usado um 
-modelo IKC Facility (modelo esse explicado durante o artigo), quando comparado com o modelo mailbox (esse que era o modelo vigente).
+Diversos trabalhos no Nanvix já foram feitos para que outras arquiteturas fossem suportadas. Pedro Penna apresentou o uso já funcional de um port do Nanvix para outra arquitetura chamada MPPA \cite{PENNA20211}. Foi usado um processador many-core de 288 núcleos que mostrou um ganho significativo de desempenho quando usado um modelo IKC Facility (proposto no artigo em referência), quando comparado com o modelo mailbox (modelo até então vigente).
 
-Pedro Penna apresenta um modelo de construção do sistema em sua tese de doutorado \cite{penna:tel-03545212}. Esse artigo apresenta várias proposições 
-de modelos de software construídos para atender com a maior eficiência ao modelo \emph{lightweight manycores}, em que um processador possui núcleos leves (eficientes em energia) e com especialidades diferentes, e que o sistema operacional pode se aproveitar disso, dividindo o trabalho para os núcleos que consigam executar aquela instrução com maior performance e menor gasto energético.
+Pedro Penna apresenta um modelo de construção do sistema em sua tese de doutorado \cite{penna:tel-03545212} com várias proposições de modelos de software construídos para atender com a maior eficiência ao modelo \emph{lightweight manycores}, em que um processador possui núcleos leves (eficientes em energia) e com especialidades diferentes. O sistema operacional pode se aproveitar disso, dividindo o trabalho para os núcleos que consigam executar aquela instrução com maior performance e menor gasto energético.
 
-O Nanvix já está sendo projetado para funcionar em ambientes com múltiplos núcleos \cite{MSC-Reinaldo}. Esse, implementou uma biblioteca de paralelismo chamada 
-OpenMP dentro do sistema. Com isso, tornou-se possível o uso de múltiplos processadores sendo usados por uma única aplicação para um ganho de desempenho em aplicações 
-que podem ser paralelizadas.
+O Nanvix está sendo desenvolvido para suportar programas com múltiplas \emph{threads} em ambientes com múltiplos núcleos \cite{MSC-Reinaldo}. Reinaldo Souza Filho implementou uma biblioteca de paralelismo OpenMP dentro do sistema. Com isso, tornou-se possível o uso de múltiplos núcelos por uma aplicação paralela visando ganho de desempenho para arquitetura RISC-V.
 
-Um software de código aberto chamado PULP-SDK foi construído com o intuito de escolher as melhores ferramentas para emulação e virtualização de processadores RISC-V. 
-No artigo \emph{GVSoC: A Highly Configurable, Fast and Accurate Full-Platform Simulator for RISC-V based IoT Processors}, foi apresentado uma proposta de software chamada
-GVSoC que é totalmente modificável, rápido e preciso na hora de virtualizar esse processador. Por conta disso, foi incluído no PULP e foi utilizado neste artigo, terá
-uma seção apenas para citá-lo.
-
-A soma dos esforços de vários contribuidores resultou em um projeto voltado ao uso do Nanvix dentro de um microssatélite que será usado 
-para fotografar a floresta Amazônica \cite{RepoCervero}. Esse, chama-se projeto CEVERO (\emph{Chip multi-procEssor for Very Energy-efficient aeRospace missiOns}), e tem 
-como membros a Universidade Federal do Rio Grande do Norte (UFRN), a Pontifícia Universidade Católica de Minas Gerais (PUC Minas), que contribui com o SO Nanvix, entre outras instituições. Portanto, cabe ressaltar, que a principal contribuição deste artigo está no \textit{port} do SO Nanvix para a plataforma PULP, que é a base arquitetural do projeto CEVERO.
+A soma dos esforços de vários contribuidores objetiva usar o Nanvix dentro de um microssatélite que será usado para fotografar a floresta Amazônica \cite{RepoCervero}. Esse, é um projeto conduzido pela Universidade Federal do Rio Grande do Norte (UFRN), e tem no SO Nanvix, a contribuição de pesquisa descrita neste artigo. Portanto, cabe ressaltar, que a principal contribuição deste artigo está no \textit{port} do SO Nanvix para a plataforma PULP usada no projeto CEVERO.
