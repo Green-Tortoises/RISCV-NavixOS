@@ -2,15 +2,11 @@
 
 O problema que existia no sistema era o uso de uma versão do GCC mais atual que implementa pseudo instruções reduzidas que não são suportadas pelo PULP SDK. 
 
-Para começar será necessário algum sistema operacional compatível para o teste. Seja alguma distro baseada no Debian, como o Ubuntu, ou um Mac, este que 
-precisará de algumas adaptações para funcionar corretamente (não há suporte no momento para o Windows). 
+Para começar, será necessário algum sistema operacional compatível para o teste. Seja alguma distro baseada no Debian, como o Ubuntu, ou um Mac, este que precisará de algumas adaptações para funcionar corretamente (não há suporte no momento para o Windows). 
 
-Para compilar o sistema é necessário usar o gcc com a flag TARGET definida para “qemu-riscv”, isso configura o makefile para compilar corretamente a 
-HAL (\textit{Hardware Abstraction Layer}) e a barelib. É necessário ter um \textit{cross-compiler} para RISC-V instalado corretamente no computador e os pacotes do qemu 
-para emulação de um processador RISC-V. Toda essa informação está disponível na documentação oficial do Nanvix \cite{NanvixOS}. 
+Para compilar o sistema é necessário usar o gcc com a flag TARGET definida para “qemu-riscv”, isso configura o makefile para compilar corretamente a HAL (\textit{Hardware Abstraction Layer}) e a barelib. É necessário ter um \textit{cross-compiler} para RISC-V instalado corretamente no computador e os pacotes do qemu para emulação de um processador RISC-V. Toda essa informação está disponível na documentação oficial do Nanvix \cite{NanvixOS}. 
 
-Com todas as ferramentas em mãos, o trabalho é fazer um \textit{backport} da versão do compilador gcc que estava sendo usado no projeto (versão 1.10 para 1.9.1). As versões diferem na forma de escrever as pseudo instruções. Para utilizar essa ferramenta é necessário realizar o \textit{cross-compiler} da sua plataforma para RISC-V e definir a variável de ambiente “PULP\_RISCV\_GCC\_TOOLCHAIN” com o caminho para esse programa. Com isso, será possível executar o PULP e testar as aplicações que já estão disponíveis dentro do repositório dele para verificar se a emulação está funcionando corretamente. Sempre é importante ressaltar que é necessário verificar o 
-funcionamento da emulação de múltiplas \textit{harts} ou se está rodando todo o código de forma sequencial. Toda essa informação está disponível na documentação oficial 
+Com todas as ferramentas em mãos, o trabalho é fazer um \textit{backport} da versão do compilador gcc que estava sendo usado no projeto (versão 1.10 para 1.9.1). As versões diferem na forma de escrever as pseudo instruções. Para utilizar essa ferramenta é necessário realizar o \textit{cross-compiler} da sua plataforma para RISC-V e definir a variável de ambiente “PULP\_RISCV\_GCC\_TOOLCHAIN” com o caminho para esse programa. Com isso, será possível executar o PULP e testar as aplicações que já estão disponíveis dentro do repositório dele para verificar se a emulação está funcionando corretamente. Sempre é importante ressaltar que é necessário verificar o funcionamento da emulação de múltiplas \textit{harts} ou se está rodando todo o código de forma sequencial. Toda essa informação está disponível na documentação oficial 
 do PULP SDK \cite{PulpSDKRepositorio}.
 
 \begin{figure}[h!]
@@ -19,4 +15,4 @@ do PULP SDK \cite{PulpSDKRepositorio}.
     \caption{Commit com as intruções modificadas \\ \cite{SolucaoInstrucoesDOWNGrade}} % https://github.com/nanvix/hal/pull/650/files
 \end{figure}
 
-Para que fosse possível fazer esse \textit{backport} foi necessário encontrar a documentação do RISC-V em uma versão atual e em uma versão mais antiga, antes de ser suportado versões reduzidas de suas instruções. Dentro dos arquivos do Nanvix, três deles  possuem código de máquina dentro do código em C (usando a keyword \_\_asm\_\_ do gcc) e que precisariam ser desatualizados. Encontrando todas as referências às instruções reduzidas dentro do repositório, é necessário alterá-las para uma instrução completa e, com isso, o sistema já estará suportando o PULP SDK. É possível testar seu funcionamento compilando o Nanvix usando o PULP.
+Para que fosse possível fazer esse \textit{backport}, foi necessário encontrar a documentação do RISC-V em uma versão atual e em uma versão mais antiga, antes de suportar versões reduzidas de suas instruções. Dentro dos arquivos do Nanvix, três deles  possuem código de máquina dentro do código em C (usando a keyword \_\_asm\_\_ do gcc) e que precisariam ser desatualizados. Encontrando todas as referências às instruções reduzidas dentro do repositório, é necessário alterá-las para uma instrução completa e, com isso, o sistema já estará suportando o PULP SDK. É possível testar seu funcionamento compilando o Nanvix usando o PULP.
