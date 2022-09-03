@@ -8,6 +8,8 @@ recursos. Há o \textit{port} para arquiteturas MPPA-256, OpenRISC, RISC-V, x86,
 arquitetura e plataforma. Em especial, a plataforma PULP, que embora seja baseada em RISC-V não é compatível com nenhuma das arquiteturas previamente citadas. 
 Isso faz com que o principal problema abordado no artigo seja a portabilidade do Nanvix para o PULP.
 
+Um software de código aberto chamado PULP-SDK \cite{PulpSDKRepositorio} foi construído com o intuito de escolher as melhores ferramentas para emulação e virtualização de processadores RISC-V. Bruschi et al. \cite{9643828} apresentaram uma proposta de software chamada GVSoC, que é totalmente modificável, rápido e preciso na hora de virtualizar esse processador. Por conta disso, foi incluído no PULP e foi utilizado neste artigo.
+
 Nesse sentido, o objetivo principal deste artigo é apresentar a abordagem de \textit{port} para o PULP com discussões de etapas e verificação via ambiente de integração contínua chamada Jenkins \cite{JenkinsServer}. Este é um trabalho de pesquisa que contribui para um projeto desenvolvido na Universidade Federal do Rio Grande do Norte, que objetiva projetar  um microssatélite para monitorar a floresta Amazônica \cite{RepoCervero}. Com isso, o uso eficiente dos recursos, sendo o baixo consumo energético e alta performance, são essenciais.
 
 Este trabalho está organizado da seguinte forma. A Seção 2 discute os trabalhos relacionados. A Seção 3 é um \textit{background} sobre o sistema operacional e o 
